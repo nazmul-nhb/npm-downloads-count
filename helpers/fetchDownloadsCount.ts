@@ -1,7 +1,8 @@
 import https from "https";
+import { IDownloadsData } from "../types/interfaces";
 
 // Helper function to wrap https.get() in a promise
-export const fetchDownloadsCount = (url: string): Promise<string> => {
+export const fetchDownloadsCount = (url: string): Promise<IDownloadsData> => {
 	return new Promise((resolve, reject) => {
 		https
 			.get(url, (response) => {
@@ -12,7 +13,8 @@ export const fetchDownloadsCount = (url: string): Promise<string> => {
 				});
 
 				response.on("end", () => {
-					resolve(data);
+					const parsedData: IDownloadsData = JSON.parse(data);
+					resolve(parsedData);
 				});
 
 				response.on("error", (err) => {

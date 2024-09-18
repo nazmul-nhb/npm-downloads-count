@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { fetchDownloadsCount } from "../helpers/fetchDownloads";
+import { fetchDownloadsCount } from "../helpers/fetchDownloadsCount";
 import { fetchPackageDetails } from "../helpers/fetchPackageDetails";
 
 // Get Downloads Count for NPM Package
@@ -31,15 +31,13 @@ export const getDownloadsCount = async (
 			packageName
 		);
 
-		const downloadsData = await fetchDownloadsCount(url);
-
-		const { downloads } = JSON.parse(downloadsData);
+		const { downloads } = await fetchDownloadsCount(url);
 
 		res.send({
 			success: true,
 			packageName,
-            authorName,
-            authorEmail,
+			authorName,
+			authorEmail,
 			downloads,
 			providedBy,
 		});

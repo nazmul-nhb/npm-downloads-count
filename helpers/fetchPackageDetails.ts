@@ -1,7 +1,8 @@
 import https from "https";
+import { IPackageDetails } from "../types/interfaces";
 
-// Helper function to wrap https.get() in a promise
-export const fetchPackageDetails = (packageName: string): Promise<any> => {
+// Helper function to get package details
+export const fetchPackageDetails = (packageName: string): Promise<IPackageDetails> => {
 	return new Promise((resolve, reject) => {
 		const url = `https://registry.npmjs.org/${packageName}`;
 
@@ -16,13 +17,13 @@ export const fetchPackageDetails = (packageName: string): Promise<any> => {
 				response.on("end", () => {
 					try {
 						const packageData = JSON.parse(data);
-						const authorName =
+						const authorName: string =
 							packageData.author?.name || "Unknown Author!";
-						const authorEmail =
+						const authorEmail: string =
 							packageData.author?.email || "Email Not Provided!";
 						resolve({ authorName, authorEmail, packageData });
 					} catch (err) {
-						reject("Failed to Parse Package Data");
+						reject("Failed to Parse Package Data!");
 					}
 				});
 
