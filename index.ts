@@ -25,7 +25,7 @@ const port = process.env.PORT || 4242;
 		app.use("/package", packageRoutes);
 
 		// Error handler for 404
-		app.use((req: Request, res: Response, next: NextFunction) => {
+		app.use((_req: Request, _res: Response, next: NextFunction) => {
 			const error: ErrorObject = new Error("Requested URL Not Found!");
 			error.status = 404;
 			next(error);
@@ -35,9 +35,9 @@ const port = process.env.PORT || 4242;
 		app.use(
 			(
 				error: ErrorObject,
-				req: Request,
+				_req: Request,
 				res: Response,
-				next: NextFunction
+				_next: NextFunction
 			) => {
 				console.error(error);
 				res.status(error.status || 500).send({

@@ -3,16 +3,26 @@ import { fetchDownloadsCount } from "../helpers/fetchDownloads";
 
 // Get Downloads Count for NPM Package
 export const getDownloadsCount = async (
-	req: Request<{  }, {name:string, startDate:string}, {}>,
+	req: Request<
+		{},
+		{},
+		{},
+		{ packageName?: string; startDate?: string; endDate?: string }
+	>,
 	res: Response,
 	next: NextFunction
 ) => {
 	try {
-		const startDate = "1970-01-01";
+		const defaultStartDate = "1970-01-01",
+			defaultPackageName = "@nazmul-nhb/id-generator",
+			defaultEndDate = new Date().toISOString().split("T")[0],
+			providedBy = "Nazmul Hassan";
 
-		const packageName = "@nazmul-nhb/id-generator";
-
-		const endDate = new Date().toISOString().split("T")[0];
+		const {
+			packageName = defaultPackageName,
+			startDate = defaultStartDate,
+			endDate = defaultEndDate,
+		} = req.query;
 
 		const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
@@ -20,7 +30,7 @@ export const getDownloadsCount = async (
 
 		const { downloads } = JSON.parse(data);
 
-		res.send({ success: true, packageName, downloads });
+		res.send({ success: true, providedBy, packageName, downloads });
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error("Error Getting Downloads Count: ", error.message);
