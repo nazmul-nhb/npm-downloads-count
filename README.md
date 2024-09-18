@@ -1,12 +1,12 @@
-# 📦 NPM Package Download Count API
+# 📦 NPM Package Download Count
 
 [Live API URL](https://npm-downloads-count-nhb.vercel.app/package)
 
-This is an Express.js + TypeScript project that provides the total download count for an NPM package over a specified time period using the NPM registry API. Users can fetch download statistics by providing a package name and a date range.
+This is an Express.js + TypeScript project that provides the total download count (and author info - name and email) for an NPM package over a specified time period using the NPM registry API. Users can fetch download statistics by providing a package name and a date range.
 
 ## 🚀 Features
 
-- Retrieve the total download count for an NPM package
+- Retrieve the total download count (and author info - name and email) for an NPM package
 - Optional query parameters for specifying package name, start date, and end date
 - Default values are used if no query parameters are provided
 
@@ -100,7 +100,7 @@ or
 
 #### `GET /package`
 
-Retrieves the download count (and author name) for a specified NPM package over a specified time range.
+Retrieves the download count (and author info - name and email) for a specified NPM package over a specified time range.
 
 #### Query Parameters
 
@@ -174,4 +174,4 @@ Please ensure that your code follows the project's coding guidelines and include
 
 ---
 
-Made with ❤️ by [Nazmul Hassan](https://github.com/nazmul-nhb)
+Made with ❤️ by [Nazmul Hassan](https://nazmul-nhb.vercel.app)
