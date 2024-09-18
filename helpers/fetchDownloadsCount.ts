@@ -1,7 +1,7 @@
 import https from "https";
 import { IDownloadsData } from "../types/interfaces";
 
-// Helper function to wrap https.get() in a promise
+// Helper function to get downloads count
 export const fetchDownloadsCount = (url: string): Promise<IDownloadsData> => {
 	return new Promise((resolve, reject) => {
 		https
