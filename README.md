@@ -66,12 +66,12 @@ This is an Express.js + TypeScript project that provides the total download coun
 
 You can access the live API at:
 
-[https://npm-downloads-count.vercel.app/](https://npm-downloads-count.vercel.app/)
+[https://npm-downloads-count-nhb.vercel.app](https://npm-downloads-count-nhb.vercel.app/package)
 
 Example request:
 
 ```bash
-GET https://npm-downloads-count.vercel.app/package
+GET https://npm-downloads-count-nhb.vercel.app/package
 ```
 
 You can use query parameters to customize the request as mentioned in the [API Documentation](#-api-documentation).
