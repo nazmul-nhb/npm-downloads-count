@@ -1,7 +1,8 @@
-import express, {Application, Request, Response, NextFunction } from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { ErrorObject } from "./types/interfaces";
+import packageRoutes from "./routes/package";
 
 dotenv.config();
 
@@ -20,6 +21,9 @@ const port = process.env.PORT || 4242;
 		app.get("/", async (req: Request, res: Response) => {
 			res.send("Server is Running!");
 		});
+
+		// Actual Routes
+		app.use("/package", packageRoutes);
 
 		// Error handler for 404
 		app.use((req: Request, res: Response, next: NextFunction) => {
