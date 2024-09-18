@@ -10,10 +10,10 @@ This is an Express.js + TypeScript project that provides the total download coun
 
 ## 📚 Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Contributing](#ontributing)
+- [Installation](#-installation)
+- [Usage](#%EF%B8%8F-usage)
+- [API Documentation](#-api-documentation)
+- [Contributing](#-contributing)
 
 ## 💻 Installation
 
@@ -64,13 +64,27 @@ This is an Express.js + TypeScript project that provides the total download coun
 
 ### Running the API
 
+You can access the live API at:
+
+[https://npm-downloads-count.vercel.app/](https://npm-downloads-count.vercel.app/)
+
+Example request:
+
+```bash
+GET https://npm-downloads-count.vercel.app/package
+```
+
+You can use query parameters to customize the request as mentioned in the [API Documentation](#-api-documentation).
+
+### Running the API Locally
+
 After starting the server, you can access the API at `http://localhost:4242/package`.
 
 ## 📖 API Documentation
 
 ### Base URL
 
-```
+```bash
     http://localhost:4242/package
 ```
 
