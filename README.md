@@ -1,5 +1,7 @@
 # 📦 NPM Package Download Count API
 
+[Live API URL](https://npm-downloads-count-nhb.vercel.app/package)
+
 This is an Express.js + TypeScript project that provides the total download count for an NPM package over a specified time period using the NPM registry API. Users can fetch download statistics by providing a package name and a date range.
 
 ## 🚀 Features
@@ -26,39 +28,39 @@ This is an Express.js + TypeScript project that provides the total download coun
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/nazmul-nhb/npm-downloads-count.git
-   ```
+    ```bash
+    git clone https://github.com/nazmul-nhb/npm-downloads-count.git
+    ```
 
 2. Navigate to the project directory:
 
-   ```bash
-   cd npm-downloads-count
-   ```
+    ```bash
+    cd npm-downloads-count
+    ```
 
 3. Install the dependencies:
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-   or
+    or
 
-   ```bash
-   yarn install
-   ```
+    ```bash
+    yarn install
+    ```
 
 4. Run the development server:
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
-   or
+    or
 
-   ```bash
-   yarn dev
-   ```
+    ```bash
+    yarn dev
+    ```
 
 ## ⚙️ Usage
 
@@ -88,55 +90,65 @@ After starting the server, you can access the API at `http://localhost:4242/pack
     http://localhost:4242/package
 ```
 
+or
+
+```bash
+    https://npm-downloads-count-nhb.vercel.app/package
+```
+
 ### Endpoint
 
 #### `GET /package`
 
-Retrieves the download count for a specified NPM package over a specified time range.
+Retrieves the download count (and author name) for a specified NPM package over a specified time range.
 
 #### Query Parameters
 
-| Parameter     | Type     | Required | Description                                               | Default Value                 |
-| ------------- | -------- | -------- | --------------------------------------------------------- | ----------------------------- |
-| `packageName` | `string` | No       | The name of the NPM package to get download count for.     | `@nazmul-nhb/id-generator`     |
-| `startDate`   | `string` | No       | The start date for download count in `YYYY-MM-DD` format.  | `1970-01-01`                  |
-| `endDate`     | `string` | No       | The end date for download count in `YYYY-MM-DD` format.    | Current date                  |
+| Parameter     | Type     | Required | Description                                               | Default Value              |
+| ------------- | -------- | -------- | --------------------------------------------------------- | -------------------------- |
+| `packageName` | `string` | No       | The name of the NPM package to get download count for.    | `@nazmul-nhb/id-generator` |
+| `startDate`   | `string` | No       | The start date for download count in `YYYY-MM-DD` format. | `1970-01-01`               |
+| `endDate`     | `string` | No       | The end date for download count in `YYYY-MM-DD` format.   | Current date               |
 
 ### Example Requests
 
 1. **Default request:**
 
-   ```bash
-   GET /package
-   ```
+    ```bash
+    GET /package
+    ```
 
-   **Response:**
+    **Response:**
 
-   ```json
-   {
-     "success": true,
-     "providedBy": "Nazmul Hassan",
-     "packageName": "@nazmul-nhb/id-generator",
-     "downloads": 666
-   }
-   ```
+    ```json
+    {
+        "success": true,
+        "packageName": "@nazmul-nhb/id-generator",
+        "authorEmail": "nazmulnhb007@yahoo.com",
+        "authorName": "Nazmul Hassan",
+        "downloads": 666,
+        "providedBy": "Nazmul Hassan"
+    }
+    ```
 
 2. **Custom package name and date range:**
 
-   ```bash
-   GET /package?packageName=express&startDate=2020-01-01&endDate=2024-01-01
-   ```
+    ```bash
+    GET /package?packageName=express&startDate=2020-01-01&endDate=2024-01-01
+    ```
 
-   **Response:**
+    **Response:**
 
-   ```json
-   {
-     "success": true,
-     "providedBy": "Nazmul Hassan",
-     "packageName": "express",
-     "downloads": 666666
-   }
-   ```
+    ```json
+    {
+        "success": true,
+        "packageName": "express",
+        "authorName": "TJ Holowaychuk",
+        "authorEmail": "tj@vision-media.ca",
+        "downloads": 2230506276,
+        "providedBy": "Nazmul Hassan"
+    }
+    ```
 
 ### Error Handling
 
@@ -144,8 +156,8 @@ If an error occurs, the API responds with a status code and an error message:
 
 ```json
 {
-  "success": false,
-  "message": "Error message"
+    "success": false,
+    "message": "Error Message"
 }
 ```
 

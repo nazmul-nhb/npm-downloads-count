@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { fetchDownloadsCount } from "../helpers/fetchDownloads";
+import { fetchPackageDetails } from "../helpers/fetchPackageDetails";
 
 // Get Downloads Count for NPM Package
 export const getDownloadsCount = async (
@@ -26,11 +27,22 @@ export const getDownloadsCount = async (
 
 		const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
-		const data = await fetchDownloadsCount(url);
+		const { authorName, authorEmail } = await fetchPackageDetails(
+			packageName
+		);
 
-		const { downloads } = JSON.parse(data);
+		const downloadsData = await fetchDownloadsCount(url);
 
-		res.send({ success: true, providedBy, packageName, downloads });
+		const { downloads } = JSON.parse(downloadsData);
+
+		res.send({
+			success: true,
+			packageName,
+            authorName,
+            authorEmail,
+			downloads,
+			providedBy,
+		});
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error("Error Getting Downloads Count: ", error.message);
