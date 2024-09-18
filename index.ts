@@ -13,7 +13,6 @@ const port = process.env.PORT || 4242;
 (async () => {
 	try {
 		// Middlewares
-		// TODO: Add CORS Options when project is done!
 		app.use(cors());
 		app.use(express.json());
 

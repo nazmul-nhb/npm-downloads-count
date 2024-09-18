@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { fetchDownloadsCount } from "../helpers/fetchDonwloads";
+import { fetchDownloadsCount } from "../helpers/fetchDownloads";
 
 // Get Downloads Count for NPM Package
 export const getDownloadsCount = async (
-	req: Request,
+	req: Request<{  }, {name:string, startDate:string}, {}>,
 	res: Response,
 	next: NextFunction
 ) => {
