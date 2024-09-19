@@ -8,5 +8,12 @@
 				"distDir": "dist"
 			}
 		}
+	],
+	"routes": [
+		{
+			"src": "/(.*)",
+			"dest": "/dist/index.js",
+			"methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+		}
 	]
 }
