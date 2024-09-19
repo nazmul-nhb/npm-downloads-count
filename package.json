@@ -1,10 +1,11 @@
 {
 	"name": "npm-downloads-count",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"main": "index.ts",
 	"scripts": {
-		"dev": "nodemon index.ts",
-		"start": "ts-node index.ts"
+		"dev": "nodemon src/index.ts",
+		"build":"tsc",
+		"start": "node index.js"
 	},
 	"keywords": [
 		"npm",
