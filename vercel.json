@@ -3,14 +3,10 @@
 	"builds": [
 		{
 			"src": "./src/index.ts",
-			"use": "@vercel/node"
-		}
-	],
-	"routes": [
-		{
-			"src": "/(.*)",
-			"dest": "/dist/$1",
-			"methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+			"use": "@vercel/node",
+			"config": {
+				"distDir": "dist"
+			}
 		}
 	]
 }
