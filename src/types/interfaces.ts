@@ -1,4 +1,4 @@
-export interface ErrorObject extends Error {
+export interface IErrorObject extends Error {
 	status?: number;
 }
 

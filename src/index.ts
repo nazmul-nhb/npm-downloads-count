@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { ErrorObject } from './types/interfaces';
+import { IErrorObject } from './types/interfaces';
 import packageRoutes from './routes/package';
 
 dotenv.config();
@@ -26,7 +26,7 @@ const port = process.env.PORT || 4242;
 
 		// Error handler for 404
 		app.use((_req: Request, _res: Response, next: NextFunction) => {
-			const error: ErrorObject = new Error('Requested URL Not Found!');
+			const error: IErrorObject = new Error('Requested URL Not Found!');
 			error.status = 404;
 			next(error);
 		});
@@ -34,7 +34,7 @@ const port = process.env.PORT || 4242;
 		// Final error handler
 		app.use(
 			(
-				error: ErrorObject,
+				error: IErrorObject,
 				_req: Request,
 				res: Response,
 				_next: NextFunction,
