@@ -56,3 +56,5 @@ const port = process.env.PORT || 4242;
 		// process.exit(1);
 	}
 })();
+
+export default app;
