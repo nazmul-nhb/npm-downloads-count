@@ -1,5 +1,6 @@
 {
 	"version": 2,
+	"buildCommand": "tsc && cp package.json dist/",
 	"builds": [
 		{
 			"src": "src/index.ts",
@@ -9,7 +10,7 @@
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dest": "./dist/index.js",
+			"dest": "/dist/index.js",
 			"methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 		}
 	]
