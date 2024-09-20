@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist", // Output folder for compiled JS and .d.ts files
+		"outDir": "./dist", // Output folder for compiled JS files
 		"rootDir": "./src", // Root directory for TypeScript files
 		"module": "commonjs",
 		"target": "ES2016",
