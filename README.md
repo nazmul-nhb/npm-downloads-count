@@ -124,8 +124,8 @@ Retrieves the download count (and author info - name and email) for a specified 
     {
         "success": true,
         "packageName": "@nazmul-nhb/id-generator",
-        "authorEmail": "Email Not Provided!",
         "authorName": "Nazmul Hassan",
+        "authorEmail": "Email Not Provided!",
         "downloads": 666,
         "providedBy": "Nazmul Hassan"
     }

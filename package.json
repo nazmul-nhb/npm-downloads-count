@@ -20,7 +20,7 @@
 	},
 	"author": "Nazmul Hassan",
 	"license": "ISC",
-	"description": "Get the Downloads Count for Any NPM Package",
+	"description": "Simple API to Get the Downloads Count for Any NPM Package",
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.5",
