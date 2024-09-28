@@ -9,52 +9,47 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 4242;
 
-// Use IIFE to start the Server
-(async () => {
-	try {
-		// Middlewares
-		app.use(cors());
-		app.use(express.json());
+// Set View Engine
+app.set('view engine', 'ejs');
 
-		// Routes
-		app.get('/', async (req: Request, res: Response) => {
-			res.send('Server is Running!');
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.get('/', (_req: Request, res: Response) => {
+	res.status(200).send({ success: true, message: '🏃 Server is Running!' });
+});
+
+// Actual Routes
+app.use('/package', packageRoutes);
+
+// Error handler for 404
+app.use((_req: Request, _res: Response, next: NextFunction) => {
+	const error: IErrorObject = new Error('Requested URL Not Found!');
+	error.status = 404;
+	next(error);
+});
+
+// Final/Global Error Handler
+app.use(
+	(error: IErrorObject, _req: Request, res: Response, _next: NextFunction) => {
+		console.error('🔴 Error: ' + error.message);
+		res.status(error.status || 500).send({
+			success: false,
+			message: error.message || 'Internal Server Error!',
 		});
+	},
+);
 
-		// Actual Routes
-		app.use('/package', packageRoutes);
+// Start the Server
+const startServer = async () => {
+	app.listen(port, () => {
+		console.log('🟢 Server is Running on Port: ', port);
+	});
+};
 
-		// Error handler for 404
-		app.use((_req: Request, _res: Response, next: NextFunction) => {
-			const error: IErrorObject = new Error('Requested URL Not Found!');
-			error.status = 404;
-			next(error);
-		});
-
-		// Final error handler
-		app.use(
-			(
-				error: IErrorObject,
-				_req: Request,
-				res: Response,
-				_next: NextFunction,
-			) => {
-				console.error(error);
-				res.status(error.status || 500).send({
-					success: false,
-					message: error.message || 'Internal Server Error!',
-				});
-			},
-		);
-
-		// Start the server
-		app.listen(port, () => {
-			console.log('Server is Running on Port: ', port);
-		});
-	} catch (error) {
-		console.error('Failed to Start the Server: ', error);
-		// process.exit(1);
-	}
-})();
+// Call startServer
+startServer().catch(console.dir);
 
 export default app;
