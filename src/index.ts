@@ -28,15 +28,22 @@ app.use(express.json());
 
 // Routes
 app.get('/', (_req: Request, res: Response) => {
-	res.status(200).send({ success: true, message: '🏃 Server is Running!' });
+	res.status(200).send({
+		success: true,
+		message: '🏃 Server is Running!',
+		example: '/package?packageName=express',
+	});
 });
 
 // Actual Routes
 app.use('/package', packageRoutes);
 
 // Error handler for 404
-app.use((_req: Request, _res: Response, next: NextFunction) => {
-	const error: IErrorObject = new Error('Requested URL Not Found!');
+app.use((req: Request, _res: Response, next: NextFunction) => {
+	const url = req.url.replace('/', '');
+	const error: IErrorObject = new Error(
+		'Requested End-Point ' + url + ' Not Found!',
+	);
 	error.status = 404;
 	next(error);
 });
