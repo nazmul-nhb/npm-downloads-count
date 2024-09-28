@@ -31,14 +31,22 @@ export const getDownloadsCount = async (
 
 		const { downloads } = await fetchDownloadsCount(url);
 
-		res.send({
+		const pkgData = {
 			success: true,
 			packageName,
 			authorName,
 			authorEmail,
 			downloads,
 			providedBy,
-		});
+		};
+
+		// Check if the request explicitly asks for JSON
+		if (req.rawHeaders?.includes('application/json')) {
+			return res.status(200).json(pkgData);
+		}
+
+		// Otherwise, render EJS view
+		return res.render('downloads', { data: pkgData });
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error('Error Getting Downloads Count: ', error.message);

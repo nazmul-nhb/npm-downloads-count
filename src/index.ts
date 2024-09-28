@@ -1,4 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
+import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { IErrorObject } from './types/interfaces';
@@ -8,6 +9,9 @@ dotenv.config();
 
 const app: Application = express();
 const port = process.env.PORT || 4242;
+
+// Set the path to the views folder
+app.set('views', path.join(__dirname, 'views'));
 
 // Set View Engine
 app.set('view engine', 'ejs');
