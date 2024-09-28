@@ -2,6 +2,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import favicon from 'serve-favicon';
 import { IErrorObject } from './types/interfaces';
 import packageRoutes from './routes/package';
 
@@ -9,6 +10,11 @@ dotenv.config();
 
 const app: Application = express();
 const port = process.env.PORT || 4242;
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Set the path to the views folder
 app.set('views', path.join(__dirname, 'views'));
