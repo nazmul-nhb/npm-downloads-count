@@ -16,6 +16,7 @@ This is an Express.js + TypeScript project that provides the total download coun
 - [Installation](#-installation)
 - [Usage](#%EF%B8%8F-usage)
 - [API Documentation](#-api-documentation)
+- [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
 
 ## 💻 Installation
@@ -206,6 +207,12 @@ If an error occurs, the API responds with a status code and an error message:
 ```
 
 - This will ensure that the response from the server is interpreted as JSON and can be processed accordingly on your website.
+
+## 🚧 Roadmap
+
+- [ ] Add support for multiple packages in a single request
+- [ ] Include trending NPM packages section
+- [ ] Improve error handling for edge cases
 
 ## 🤝 Contributing
 
