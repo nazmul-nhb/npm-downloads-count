@@ -7,6 +7,7 @@ This is an Express.js + TypeScript project that provides the total download coun
 ## 🚀 Features
 
 - Retrieve the total download count (and author info - name and email) for an NPM package
+- Provides a user-friendly, formatted web view when accessed via a browser, and returns a JSON response for programmatic requests
 - Optional query parameters for specifying package name, start date, and end date
 - Default values are used if no query parameters are provided
 
