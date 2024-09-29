@@ -66,14 +66,16 @@ This is an Express.js + TypeScript project that provides the total download coun
 
 ### Running the API
 
-You can access the live API at:
+- You can access the live API at:
 
 [https://npm-downloads-count-nhb.vercel.app](https://npm-downloads-count-nhb.vercel.app/package)
 
-Example request:
+- If you make a request from a browser, you'll see a nicely formatted web view; otherwise, you'll receive a JSON response.
+
+- Example request:
 
 ```bash
-GET https://npm-downloads-count-nhb.vercel.app/package
+GET https://npm-downloads-count-nhb.vercel.app/package?packageName=color-generator-fl
 ```
 
 You can use query parameters to customize the request as mentioned in the [API Documentation](#-api-documentation).
@@ -160,6 +162,49 @@ If an error occurs, the API responds with a status code and an error message:
     "message": "Error Message"
 }
 ```
+
+### Fetching Data to Display on External Website
+
+- To fetch data from the API and display it on your website, make sure to add the following header in your `fetch` request to specify that the response will be in JSON format:
+
+```js
+    headers: {
+        'Accept': 'application/json',
+    }
+```
+
+#### Example Fetch Request
+
+- Using fetch API
+
+```js
+    fetch('https://npm-downloads-count-nhb.vercel.app/package?packageName=express', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => console.error('Error:', error));
+```
+
+- If your'e using axios:
+
+```js
+    const { data } = await axios.get(
+        'https://npm-downloads-count-nhb.vercel.app/package?packageName=express',
+            {
+                headers: { Accept: "application/json" },
+            }
+        );
+
+    console.log(data);    
+```
+
+- This will ensure that the response from the server is interpreted as JSON and can be processed accordingly on your website.
 
 ## 🤝 Contributing
 
