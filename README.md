@@ -206,6 +206,14 @@ If an error occurs, the API responds with a status code and an error message:
     console.log(data);    
 ```
 
+#### Utilizing API Tester
+
+- By default, the Thunder Client sends an Accept header with each request. However, if you receive an HTML response from certain API testers, please include the following option in the headers to get `JSON Response`:
+
+```bash
+    'Accept': 'application/json'
+```
+
 - This will ensure that the response from the server is interpreted as JSON and can be processed accordingly on your website.
 
 ## 🚧 Roadmap
