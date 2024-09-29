@@ -6,6 +6,16 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		<title>Downloads Count for <%= data.packageName %></title>
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+			.sourceSans {
+				font-family: 'Source Sans 3', sans-serif;
+			}
+
+			.kreonSerif {
+				font-family: 'Kreon', serif;
+			}
+
 			* {
 				padding: 0;
 				margin: 0;
@@ -14,6 +24,10 @@
 			.main {
 				height: 88vh;
 				width: 99%;
+				background: #000000ed;
+				color: whitesmoke;
+				margin: 8px 0;
+				font-size: 17px;
 			}
 
 			.container {
@@ -23,16 +37,104 @@
 				justify-content: center;
 				gap: 8px;
 			}
+
+			.container p {
+				border: 1px solid white;
+				padding: 3px 8px;
+				transition: all;
+				transition-duration: 0.5s;
+			}
+
+			.container p:hover {
+				border: 1px solid steelblue;
+				color: steelblue;
+				background: white;
+			}
+
+			.title,
+			.pkg,
+			.dls,
+			.provider {
+				display: inline-block;
+				font-family: 'Kreon', serif;
+				padding: 0 4px;
+				animation: shrinkGrow 2s ease-in-out infinite;
+			}
+
+			.container p:hover a {
+				color: steelblue;
+				transition: color;
+				transition-duration: 0.5s;
+			}
+
+			h1.title {
+				font-size: 20px;
+				padding-bottom: 4px;
+				border-bottom: 1px solid whitesmoke;
+			}
+
+			a {
+				color: #b9ebed;
+				text-decoration: none;
+				transition: color;
+				transition-duration: 0.5s;
+			}
+
+			a:hover,
+			.container p:hover a:hover {
+				color: slateblue;
+			}
+
+			@keyframes shrinkGrow {
+				0% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(1.1);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
 		</style>
 	</head>
-	<body class="main">
+	<body class="main sourceSans">
 		<div class="container">
-			<h1 class="title">Package Details: <%= data.packageName %></h1>
-			<p><strong>Package Name:</strong> <%= data.packageName %></p>
-			<p><strong>Author Name:</strong> <%= data.authorName %></p>
-			<p><strong>Author Email:</strong> <%= data.authorEmail %></p>
-			<p><strong>Total Downloads:</strong> <%= data.downloads %></p>
-			<p><strong>Provided By:</strong> <%= data.providedBy %></p>
+			<h1 class="title">Package Details</h1>
+			<p>
+				<strong>Package Name:</strong>
+				<a
+					class="pkg"
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://www.npmjs.com/package/<%= data.packageName %>"
+				>
+					<%= data.packageName %>
+				</a>
+			</p>
+			<p>
+				<strong>Author Name:</strong>
+				<span class="kreonSerif"><%= data.authorName %></span>
+			</p>
+			<p>
+				<strong>Author Email:</strong>
+				<span class="kreonSerif"><%= data.authorEmail %></span>
+			</p>
+			<p>
+				<strong>Total Downloads:</strong>
+				<span class="dls"><%= data.downloads %></span>
+			</p>
+			<p>
+				<strong>Provided By:</strong>
+				<a
+					class="provider"
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://nazmul-nhb.vercel.app/"
+				>
+					<%= data.providedBy %>
+				</a>
+			</p>
 		</div>
 	</body>
 </html>

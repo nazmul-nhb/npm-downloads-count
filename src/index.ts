@@ -40,9 +40,8 @@ app.use('/package', packageRoutes);
 
 // Error handler for 404
 app.use((req: Request, _res: Response, next: NextFunction) => {
-	const url = req.url.replace('/', '');
 	const error: IErrorObject = new Error(
-		'Requested End-Point ' + url + ' Not Found!',
+		'Requested End-Point ' + req.url + ' Not Found!',
 	);
 	error.status = 404;
 	next(error);
