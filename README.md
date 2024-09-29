@@ -177,7 +177,7 @@ If an error occurs, the API responds with a status code and an error message:
 
 #### Example Fetch Request
 
-- Using fetch API
+- Using `Fetch API`
 
 ```js
     fetch('https://npm-downloads-count-nhb.vercel.app/package?packageName=express', {
@@ -193,7 +193,7 @@ If an error occurs, the API responds with a status code and an error message:
         .catch((error) => console.error('Error:', error));
 ```
 
-- If your'e using axios:
+- If you're using `Axios`:
 
 ```js
     const { data } = await axios.get(
@@ -208,7 +208,7 @@ If an error occurs, the API responds with a status code and an error message:
 
 #### Utilizing API Tester
 
-- By default, the Thunder Client sends an Accept header with each request. However, if you receive an HTML response from certain API testers, please include the following option in the headers to get `JSON Response`:
+- By default, API testing clients like `Thunder Client` sends an Accept header with each request. However, if you receive an `HTML Response` from certain API testers, please include the following option in the headers to get `JSON Response`:
 
 ```bash
     'Accept': 'application/json'
