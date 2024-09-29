@@ -6,6 +6,7 @@
 	},
 	"extends": [
 		"eslint:recommended",
+		"plugin:ejs/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"prettier"
 	],
@@ -15,7 +16,7 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": ["@typescript-eslint"],
+	"plugins": ["@typescript-eslint", "ejs"],
 	"rules": {
 		"no-unused-vars": "warn",
 		"no-unused-expressions": "error",

@@ -22,18 +22,18 @@
 			* {
 				padding: 0;
 				margin: 0;
-				box-sizing: border-box;
+                box-sizing: border-box;
 			}
 
 			.main {
 				text-align: center;
 				height: 88vh;
 				width: 100%;
-				overflow-x: hidden;
+                overflow-x: hidden;
 				background: #000000ed;
 				color: whitesmoke;
 				margin: 8px auto;
-				padding: 4px;
+                padding: 4px;
 				font-size: 17px;
 			}
 
@@ -62,7 +62,6 @@
 
 			.title,
 			.pkg,
-			.email,
 			.dls,
 			.provider {
 				display: inline-block;
@@ -128,18 +127,7 @@
 			</p>
 			<p>
 				<strong>Author Email:</strong>
-				<% if (data.authorEmail !== "Email Not Provided!") { %>
-				<a
-					class="email"
-					target="_blank"
-					rel="noopener noreferrer"
-					href="mailto:<%= data.authorEmail %>"
-				>
-					<%= data.authorEmail %>
-				</a>
-				<% } else { %>
 				<span class="kreonSerif"><%= data.authorEmail %></span>
-				<% } %>
 			</p>
 			<p>
 				<strong>Total Downloads:</strong>
