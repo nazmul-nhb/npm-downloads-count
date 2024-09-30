@@ -27,7 +27,8 @@ export const getDownloadsCount = async (
 
 		const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
-		const { authorName, authorEmail } = await fetchPackageDetails(packageName);
+		const { authorName, authorEmail } =
+			await fetchPackageDetails(packageName);
 
 		const { downloads } = await fetchDownloadsCount(url);
 
@@ -36,6 +37,8 @@ export const getDownloadsCount = async (
 			packageName,
 			authorName,
 			authorEmail,
+			startDate,
+			endDate,
 			downloads,
 			providedBy,
 		};
@@ -46,7 +49,11 @@ export const getDownloadsCount = async (
 		}
 
 		// Otherwise, render EJS view
-		return res.render('downloads', { data: pkgData });
+		return res.render('downloads', {
+			data: pkgData,
+			startDate: startDate || '1970-01-01',
+			endDate: endDate || new Date().toISOString().split('T')[0],
+		});
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error('Error Getting Downloads Count: ', error.message);
