@@ -14,16 +14,16 @@ export const getDownloadsCount = async (
 	next: NextFunction,
 ) => {
 	try {
+		let { packageName, startDate, endDate } = req.query;
+
 		const defaultStartDate = '1970-01-01',
 			defaultPackageName = '@nazmul-nhb/id-generator',
 			defaultEndDate = new Date().toISOString().split('T')[0],
 			providedBy = 'Nazmul Hassan';
 
-		const {
-			packageName = defaultPackageName,
-			startDate = defaultStartDate,
-			endDate = defaultEndDate,
-		} = req.query;
+		packageName = packageName || defaultPackageName;
+		startDate = startDate || defaultStartDate;
+		endDate = endDate || defaultEndDate;
 
 		const url = `https://api.npmjs.org/downloads/point/${startDate}:${endDate}/${packageName}`;
 
