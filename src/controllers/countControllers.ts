@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { fetchDownloadsCount } from '../helpers/fetchDownloadsCount';
 import { fetchPackageDetails } from '../helpers/fetchPackageDetails';
 
@@ -16,8 +16,8 @@ export const getDownloadsCount = async (
 	try {
 		let { packageName, startDate, endDate } = req.query;
 
-		const defaultStartDate = '1970-01-01',
-			defaultPackageName = '@nazmul-nhb/id-generator',
+		const defaultStartDate = '2010-01-01',
+			defaultPackageName = 'nhb-toolbox',
 			defaultEndDate = new Date().toISOString().split('T')[0],
 			providedBy = 'Nazmul Hassan';
 
@@ -51,7 +51,7 @@ export const getDownloadsCount = async (
 		// Otherwise, render EJS view
 		return res.render('downloads', {
 			data: pkgData,
-			startDate: startDate || '1970-01-01',
+			startDate: startDate || '2010-01-01',
 			endDate: endDate || new Date().toISOString().split('T')[0],
 		});
 	} catch (error) {

@@ -82,7 +82,7 @@ After starting the server, you can access the API at `http://localhost:4242/pack
 - Example request:
 
 ```bash
-GET https://npm-downloads-count-nhb.vercel.app/package?packageName=color-generator-fl
+GET https://npm-downloads-count-nhb.vercel.app/package?packageName=nhb-toolbox
 ```
 
 You can use query parameters to customize the request as mentioned in the [API Documentation](#-api-documentation).
@@ -100,7 +100,7 @@ In addition to making API requests via query parameters, users can interact with
 
 2. **Fill out the form fields:**
    - **Package Name:** Enter the name of the NPM package you want to get download statistics for.
-   - **Start Date:** (Optional) Choose a start date in the format `YYYY-MM-DD`. If left blank, the default will be `1970-01-01`.
+   - **Start Date:** (Optional) Choose a start date in the format `YYYY-MM-DD`. If left blank, the default will be `2010-01-01`.
    - **End Date:** (Optional) Choose an end date in the format `YYYY-MM-DD`. If left blank, the current date will be used as the default.
 
 3. **Submit the form:**
@@ -133,11 +133,11 @@ Retrieves the downloads count (and author info - name and email) for a specified
 
 #### Query Parameters
 
-| Parameter     | Type     | Required | Description                                               | Default Value              |
-| ------------- | -------- | -------- | --------------------------------------------------------- | -------------------------- |
-| `packageName` | `string` | No       | The name of the NPM package to get downloads count for.    | `@nazmul-nhb/id-generator` |
-| `startDate`   | `string` | No       | The start date for downloads count in `YYYY-MM-DD` format. | `1970-01-01`               |
-| `endDate`     | `string` | No       | The end date for downloads count in `YYYY-MM-DD` format.   | Current date               |
+| Parameter     | Type     | Required | Description                                                | Default Value   |
+| ------------- | -------- | -------- | ---------------------------------------------------------- | --------------- |
+| `packageName` | `string` | No       | The name of the NPM package to get downloads count for.    | `nhb-toolbox`   |
+| `startDate`   | `string` | No       | The start date for downloads count in `YYYY-MM-DD` format. | `2010-01-01`    |
+| `endDate`     | `string` | No       | The end date for downloads count in `YYYY-MM-DD` format.   | Current date    |
 
 ### Example Requests
 
@@ -152,10 +152,10 @@ Retrieves the downloads count (and author info - name and email) for a specified
     ```json
     {
         "success": true,
-        "packageName": "@nazmul-nhb/id-generator",
+        "packageName": "nhb-toolbox",
         "authorName": "Nazmul Hassan",
         "authorEmail": "Email Not Provided!",
-        "downloads": 666,
+        "downloads": 3333,
         "providedBy": "Nazmul Hassan"
     }
     ```
